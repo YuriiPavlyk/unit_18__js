@@ -72,8 +72,8 @@ document.querySelector(".b-4").onclick = t4;
 /*  На странице созданы 3 p.task-5 c атрибутом data. С помощью forEach переберите их и добавьте событие клик. Напишите функцию t5, которая будет запускаться при клике и добавлять атрибут data элемента, по которому кликнули в массив a5_res.*/
 
 function t5(e) {
-  a5_res.push(e.target.getAttribute('data'));
-  document.querySelector('.out-5').innerHTML = a5_res;
+  a5_res.push(e.target.getAttribute("data"));
+  document.querySelector(".out-5").innerHTML = a5_res;
 }
 
 document.querySelectorAll(".task-5").forEach((elem) => {
@@ -96,9 +96,11 @@ document.querySelector(".b-6").onclick = t6;
 /*  Дана строка str7='hello world hi mazai' - преобразуйте ее в массив и разбейте по словам. Причем слова не должны содержать пробелов и присвойте a7_res. выведите на страницу.  Запускаться решение должно при вызове функции t7. */
 
 let str7 = "hello world hi mazai";
+//let str = '';
 
 function t7() {
-  a7_res = str7.split(",");
+  a7_res = str7.split(" ");
+//  a7_res = str.join('');
   document.querySelector(".out-7").innerHTML = a7_res;
 }
 
@@ -125,7 +127,12 @@ let a9 = [
 ];
 
 function t9() {
-  a9_res = `'${a9[0].join("-")}-${a9[1].join("-")}'`;
+  for (let i = 0; i < a9.length; i++) {
+    for (let k = 0; k < a9[i].length; k++) {
+      a9_res += `${a9[i][k]}-`;
+    }
+  }
+    //a9_res = a9.flat().join("-");
   document.querySelector(".out-9").innerHTML = a9_res;
 }
 
@@ -134,15 +141,14 @@ document.querySelector(".b-9").onclick = t9;
 // Task 10 ============================================
 /*  Дан массив a10 = {name: ivan, age: 15, sex: 1, id: 45} - преобразуйте его в query строку ( так передаются GET параметры). Найдите описание что такое query строка самостоятельно. Разделитель - амперсанд. Результат присвойте a10_res. Запускаться решение должно при вызове функции t10. Допускается лишний амперсанд в конце строки!!! */
 
- let a10 = {name: 'ivan', age: 15, sex: 1, id: 45} 
- let str ='?';
+let a10 = { name: "ivan", age: 15, sex: 1, id: 45 };
+a10_res = "?";
 
 function t10() {
-    for(let key in a10){
-        //str +=key + '=' + a10[key] + '&';
-        str +=`${key}=${a10[key]}&`;
-    }
-    document.querySelector('.out-10').innerHTML = str;
+  for (let key in a10) {
+    a10_res += `${key}=${a10[key]}&`;
+  }
+  document.querySelector(".out-10").innerHTML = a10_res;
 }
 
 document.querySelector(".b-10").onclick = t10;
